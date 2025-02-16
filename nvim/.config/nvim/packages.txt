@@ -1,0 +1,6 @@
+sudo apt install ripgrep
+sudo apt install lazygit
+# install a nerdfont FiraCodeNerdFontMono-Regular
+sudo apt install luarocks
+sudo luarocks install luacheck
+sudo apt install node
