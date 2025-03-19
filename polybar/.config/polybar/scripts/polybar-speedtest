@@ -1,0 +1,40 @@
+#!/usr/bin/env python3
+import argparse
+import speedtest
+
+def get_formatted_speed(s, bytes=False):
+    unit = ""
+    if s > 1024**3:
+        s = s / 1024**3
+        unit = "G"
+    elif s > 1024**2:
+        s = s / 1024**2
+        unit = "M"
+    elif s > 1024:
+        s = s / 1024
+        unit = "K"
+    if bytes:
+        return f"{int(s/8)} {unit}iB/s"
+    return f"{int(s)} {unit}ib/s"
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--upload', action="store_true")
+parser.add_argument('--bytes', action="store_true")
+args = parser.parse_args()
+
+try:
+    s = speedtest.Speedtest()
+    s.get_best_server()  # Fetch the best test server before running tests
+except speedtest.ConfigRetrievalError:
+    print("Error: Unable to retrieve Speedtest configuration.")
+    exit(1)
+
+if args.upload:
+    upload_speed = s.upload(pre_allocate=False)
+    print("▲ " + get_formatted_speed(upload_speed, args.bytes))
+else:
+    download_speed = s.download()
+    print("▼ " + get_formatted_speed(download_speed, args.bytes))
+
+# Credits:
+# https://github.com/haideralipunjabi/polybar-speedtest/

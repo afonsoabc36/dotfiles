@@ -259,6 +259,8 @@ require("lazy").setup({
 		end,
 	},
 
+	{ "rightson/vim-p4-syntax" },
+
 	{
 		"stevearc/dressing.nvim",
 		event = "VeryLazy",
@@ -285,6 +287,14 @@ require("lazy").setup({
 
 			keymap.set("n", "<leader>wr", "<cmd>SessionRestore<CR>", { desc = "Restore session for cwd" }) -- restore last workspace session for current directory
 			keymap.set("n", "<leader>ws", "<cmd>SessionSave<CR>", { desc = "Save session for auto session root dir" }) -- save workspace session for current working directory
+		end,
+	},
+
+	{
+		"chipsenkbeil/distant.nvim",
+		branch = "v0.3",
+		config = function()
+			require("distant"):setup()
 		end,
 	},
 
@@ -928,8 +938,10 @@ require("lazy").setup({
 					["ui-select"] = {
 						require("telescope.themes").get_dropdown(),
 					},
+					distant = {},
 				},
 			})
+			require("telescope").load_extension("distant")
 
 			-- Enable Telescope extensions if they are installed
 			pcall(require("telescope").load_extension, "fzf")
@@ -1161,6 +1173,7 @@ require("lazy").setup({
 			-- Like many other themes, this one has different styles, and you could load
 			-- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
 			vim.cmd.colorscheme("tokyonight-night")
+			-- vim.cmd.colorscheme("tokyonight-day")
 
 			-- You can configure highlights by doing something like:
 			vim.cmd.hi("Comment gui=none")

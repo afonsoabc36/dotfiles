@@ -27,7 +27,7 @@ shopt -s checkwinsize
 #############
 export HISTSIZE=500
 export HISTFILESIZE=10000
-export HISTTIMEFORMAT="%F %T" # Add timestamp to history
+export HISTTIMEFORMAT="| %F %T | " # Add timestamp to history
 export HISTCONTROL=erasedups:ignoredups:ignorespace
 export EDITOR=nvim
 export VISUAL=nvim
@@ -66,6 +66,7 @@ alias lss='\ls -A'
 alias cat='bat'
 alias catt='\cat'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+alias python='python3'
 if command -v rg &> /dev/null; then
     alias grep='rg'
     alias grepp='\grep'
@@ -78,15 +79,19 @@ alias tl='tmux list-sessions'
 alias tn='tmux new-session -s'
 alias tk='tmux kill-session -t'
 
-alias f='nautilus . > /dev/null 2>&1 &'
+alias f='thunar . > /dev/null 2>&1 &'
 alias config='nvim ~/.bashrc'
 alias nconfig='nvim ~/.config/nvim/init.lua'
 alias wconfig='nvim ~/.wezterm.lua'
 alias sconfig='nvim ~/.config/starship.toml'
 alias tconfig='nvim ~/.tmux.conf'
 alias kmconfig='nvim ~/.Xmodmap'
+alias i3config='nvim ~/.config/i3/config'
+alias pconfig='nvim ~/.config/picom.conf'
+alias poconfig='nvim ~/.config/polybar/config.ini'
 alias sb='source ~/.bashrc'
 alias down='cd ~/Downloads/'
+alias .config='cd ~/.config/'
 alias dotfiles='cd ~/dotfiles/'
 alias nvimswap='cd ~/.local/state/nvim/swap/'
 alias chrome='google-chrome'
@@ -94,6 +99,20 @@ alias c='google-chrome'
 alias stremio='nohup flatpak run com.stremio.Stremio > /dev/null 2>&1 &'
 alias lg='lazygit'
 alias sp='spotify_player'
+alias bluetooth='bluetoothctl'
+alias bonsai='cbonsai --life 50 --live --infinite --screensaver'
+alias matrix='cmatrix -bs'
+alias mountpen='udisksctl mount -b /dev/sda1'
+alias unmountpen='udisksctl unmount -b /dev/sda1'
+alias forceunmountpen='sudo unmount -l /dev/sda1'
+alias pen='cd /media/afonsoabc36/465A-7EC2/'
+alias drives='lsblk'
+alias setvolume='pactl set-sink-volume @DEFAULT_SINK@'
+alias sus='systemctl suspend'
+alias shut='shutdown now'
+alias ld='lsblk'
+
+# Last alias (For faster searching and adding of alias)
 
 #######################
 ## Special Functions ##
@@ -219,8 +238,8 @@ alias 4a2='cd ~/Desktop/4ano/2Semestre/'
 
 eg() { if [ -z "$1" ]; then cd "$HOME/Desktop/4ano/2Semestre/EG/"; else target_dir="$HOME/Desktop/4ano/2Semestre/EG/${1}Aula"; if [ ! -d "$target_dir" ]; then echo "Directory not found!"; else cd "$target_dir"; fi; fi; }
 egp="$HOME/Desktop/4ano/2Semestre/EG"
-alias egtp='cd ~/Desktop/4ano/2Semestre/EG/Projeto/'
 egptp="$HOME/Desktop/4ano/2Semestre/EG/Projeto"
+egtp() { if [ -z "$1" ]; then cd "$HOME/Desktop/4ano/2Semestre/EG/Projeto/"; else target_dir="$HOME/Desktop/4ano/2Semestre/EG/Projeto/${1}TP"; if [ ! -d "$target_dir" ]; then echo "Directory not found!"; else cd "$target_dir"; fi; fi; }
 alias egs='cd ~/Desktop/4ano/2Semestre/EG/Slides/'
 egtpc() { if [ -z "$1" ]; then cd "$HOME/Desktop/4ano/2Semestre/EG/TPC/"; else target_dir="$HOME/Desktop/4ano/2Semestre/EG/TPC/TPC${1}"; if [ ! -d "$target_dir" ]; then echo "Directory not found!"; else cd "$target_dir"; fi; fi; }
 
@@ -242,7 +261,6 @@ alias rpcwtp='cd ~/Desktop/4ano/2Semestre/RPCW/Projeto/'
 rpcwptp="$HOME/Desktop/4ano/2Semestre/RPCW/Projeto"
 alias rpcws='cd ~/Desktop/4ano/2Semestre/RPCW/Slides/'
 rpcwtpc() { if [ -z "$1" ]; then cd "$HOME/Desktop/4ano/2Semestre/RPCW/RPCW2025/"; else target_dir="$HOME/Desktop/4ano/2Semestre/RPCW/RPCW2025/TP${1}/"; if [ ! -d "$target_dir" ]; then echo "Directory not found!"; else cd "$target_dir"; fi; fi; }
-alias protege='cd ~/Desktop/4ano/2Semestre/RPCW/Protege-5.6.5/ && ./run.sh'
 
 rds() { if [ -z "$1" ]; then cd "$HOME/Desktop/4ano/2Semestre/RDS/"; else target_dir="$HOME/Desktop/4ano/2Semestre/RDS/${1}Aula"; if [ ! -d "$target_dir" ]; then echo "Directory not found!"; else cd "$target_dir"; fi; fi; }
 rdsp="$HOME/Desktop/4ano/2Semestre/RDS"
@@ -260,7 +278,7 @@ splntpc() { if [ -z "$1" ]; then cd "$HOME/Desktop/4ano/2Semestre/SPLN/SPLN/"; e
 #########
 ## FZF ##
 #########
-export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
+export FZF_DEFAULT_COMMAND='find . -type f -not -path "*/node_modules/*" -not -path "*/venv/*" -not -path "*/.git/*" -not -path "*/__pycache__/*"'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
 _fzf_compgen_path() { fd --hidden --exclude .git . "$1"; }
@@ -287,6 +305,12 @@ _fzf_comprun() {
     *)            fzf --preview "bat -n --color=always --line-range :500 {}" "$@" ;;
   esac
 }
+if [ -f /usr/share/doc/fzf/examples/key-bindings.bash ]; then
+  source /usr/share/doc/fzf/examples/key-bindings.bash
+fi
+if [ -f /usr/share/doc/fzf/examples/completion.bash ]; then
+  source /usr/share/doc/fzf/examples/completion.bash
+fi
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 eval "$(zoxide init bash)"
@@ -296,12 +320,8 @@ eval "$(fzf --bash)"
 ## Greeting ##
 ##############
 cowfiles=("pikachu" "wall-e" "winnie")
-counterfile="$HOME/.cow_counter"
-cowcounter=$(cat $counterfile)
-currentcowfile=${cowfiles[$cowcounter]}
+currentcowfile=${cowfiles[$RANDOM % ${#cowfiles[@]}]}
 echo -e  "                 I'm a programmer                 I make computer go beep boop"| fmt -w 50 | cowsay -f $currentcowfile
-cowcounter=$(( (cowcounter + 1) % ${#cowfiles[@]} ))
-echo $cowcounter > "$counterfile"
 
 # Syntax Highlighting
 #source ~/.local/share/blesh/ble.sh
