@@ -3,6 +3,8 @@
 # Create the symlink for default.conf
 echo "Creating symlink for default.conf..."
 sudo ln -sf /home/afonsoabc36/dotfiles/keyd/default.conf /etc/keyd/default.conf
+echo "Creating symlink for tmux-sessionizer..."
+ln -sf ~/dotfiles/scripts/tmux-sessionizer ~/.local/bin/tmux-sessionizer
 
 # Use stow to symlink all the directories
 echo "Stowing dotfiles..."

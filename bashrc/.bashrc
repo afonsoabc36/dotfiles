@@ -78,6 +78,7 @@ alias ta='tmux attach -t'
 alias tl='tmux list-sessions'
 alias tn='tmux new-session -s'
 alias tk='tmux kill-session -t'
+alias ts='tmux-sessionizer'
 
 alias f='thunar . > /dev/null 2>&1 &'
 alias config='nvim ~/.bashrc'
@@ -98,6 +99,11 @@ alias chrome='google-chrome'
 alias c='google-chrome'
 alias stremio='nohup flatpak run com.stremio.Stremio > /dev/null 2>&1 &'
 alias lg='lazygit'
+alias gp='git pull'
+alias gP='git push'
+alias gs='git status'
+alias ga='git add'
+alias gc='git commit'
 alias sp='spotify_player'
 alias bluetooth='bluetoothctl'
 alias bonsai='cbonsai --life 50 --live --infinite --screensaver'
@@ -108,9 +114,12 @@ alias forceunmountpen='sudo unmount -l /dev/sda1'
 alias pen='cd /media/afonsoabc36/465A-7EC2/'
 alias drives='lsblk'
 alias setvolume='pactl set-sink-volume @DEFAULT_SINK@'
+alias sv='pactl set-sink-volume @DEFAULT_SINK@'
 alias sus='systemctl suspend'
 alias shut='shutdown now'
 alias ld='lsblk'
+alias bch='bluetoothctl connect FC:58:FA:13:72:62'
+alias bck='bluetoothctl connect DC:2C:26:DB:98:6A'
 
 # Last alias (For faster searching and adding of alias)
 
@@ -245,8 +254,8 @@ egtpc() { if [ -z "$1" ]; then cd "$HOME/Desktop/4ano/2Semestre/EG/TPC/"; else t
 
 npr() { if [ -z "$1" ]; then cd "$HOME/Desktop/4ano/2Semestre/NPR/"; else target_dir="$HOME/Desktop/4ano/2Semestre/NPR/${1}Aula"; if [ ! -d "$target_dir" ]; then echo "Directory not found!"; else cd "$target_dir"; fi; fi; }
 nprp="$HOME/Desktop/4ano/2Semestre/NPR"
-alias nprtp='cd ~/Desktop/4ano/2Semestre/NPR/Projeto/'
-nprptp="$HOME/Desktop/4ano/2Semestre/NPR/Projeto"
+alias nprtp='cd ~/Desktop/4ano/2Semestre/NPR/Projeto/G3App/'
+nprptp="$HOME/Desktop/4ano/2Semestre/NPR/Projeto/G3App"
 alias nprs='cd ~/Desktop/4ano/2Semestre/NPR/Slides/'
 
 rfm() { if [ -z "$1" ]; then cd "$HOME/Desktop/4ano/2Semestre/RFM/"; else target_dir="$HOME/Desktop/4ano/2Semestre/RFM/${1}Aula"; if [ ! -d "$target_dir" ]; then echo "Directory not found!"; else cd "$target_dir"; fi; fi; }

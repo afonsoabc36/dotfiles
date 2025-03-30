@@ -100,7 +100,9 @@ vim.keymap.set("n", "<leader>j", "<C-w>j", { desc = "Focus below window" })
 vim.keymap.set("n", "<leader>k", "<C-w>k", { desc = "Focus above window" })
 vim.keymap.set("n", "<leader>l", "<C-w>l", { desc = "Focus right window" })
 -- Save file
-vim.keymap.set("n", "<leader>w", ":w<CR>", { desc = "Save File" })
+vim.keymap.set("n", "<leader>w", function()
+	vim.cmd("write")
+end, { desc = "Save File" })
 -- Copy from the clipboard
 vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { desc = "Copy to clipboard" })
 vim.keymap.set({ "n", "v" }, "<leader>Y", '"+yy', { desc = "Copy whole line to clipboard" })
@@ -130,6 +132,39 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("n", "J", ":m .+1<CR>==")
 vim.keymap.set("n", "K", ":m .-2<CR>==")
+-- local function move_visual(direction)
+-- 	-- Explicitly set marks before moving
+-- 	vim.cmd("silent! normal! gv")
+
+-- 	if direction == "down" then
+-- 		vim.cmd("silent! m '>+1")
+-- 	elseif direction == "up" then
+-- 		vim.cmd("silent! m '<-2")
+-- 	end
+
+-- 	-- Reselect and reindent
+-- 	vim.cmd("silent! normal! gv=gv")
+-- end
+
+-- -- Move selected lines down
+-- vim.keymap.set("v", "J", function()
+-- 	move_visual("down")
+-- end, { desc = "Move selection down" })
+
+-- -- Move selected lines up
+-- vim.keymap.set("v", "K", function()
+-- 	move_visual("up")
+-- end, { desc = "Move selection up" })
+
+-- vim.keymap.set("n", "J", function()
+-- 	vim.cmd("m .+1") -- Move line down
+-- 	vim.cmd("normal! ==") -- Re-indent
+-- end, { desc = "Move line down" })
+
+-- vim.keymap.set("n", "K", function()
+-- 	vim.cmd("m .-2") -- Move line up
+-- 	vim.cmd("normal! ==") -- Re-indent
+-- end, { desc = "Move line up" })
 
 -- Better scroll
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
@@ -295,6 +330,36 @@ require("lazy").setup({
 		branch = "v0.3",
 		config = function()
 			require("distant"):setup()
+		end,
+	},
+
+	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		opts = {
+			-- add any options here
+		},
+		dependencies = {
+			-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+			"MunifTanjim/nui.nvim",
+			-- OPTIONAL:
+			--   `nvim-notify` is only needed, if you want to use the notification view.
+			--   If not available, we use `mini` as the fallback
+			"rcarriga/nvim-notify",
+		},
+		config = function()
+			-- Set up noice.nvim and other settings here if needed
+			require("noice").setup({
+				-- Noice-specific configuration (if any)
+			})
+
+			-- Now configure nvim-notify
+			require("notify").setup({
+				timeout = 500, -- 2000 milliseconds = 2 seconds (adjust this value as needed)
+				max_width = 40,
+				max_height = 20,
+				render = "wrapped-default",
+			})
 		end,
 	},
 
@@ -656,8 +721,9 @@ require("lazy").setup({
 			-- Basic configuration
 			vim.g.EasyMotion_do_mapping = 0 -- Disable default mappings
 			-- vim.api.nvim_set_keymap("n", "<Leader><Leader>s", "<Plug>(easymotion-overwin-f)", {})
-			vim.api.nvim_set_keymap("n", "ç", "<Plug>(easymotion-overwin-f)", {})
-			vim.api.nvim_set_keymap("n", "<Leader><Leader>f", "<Plug>(easymotion-bd-f)", {})
+			-- vim.api.nvim_set_keymap("n", "ç", "<Plug>(easymotion-overwin-f)", {})
+			vim.api.nvim_set_keymap("n", "ç", "<Plug>(easymotion-bd-f)", {}) -- or "s", não tem nenhum mapping no normal mode
+			vim.api.nvim_set_keymap("n", "<Leader><Leader>f", "<Plug>(easymotion-overwin-f)", {}) -- Não funciona bem com o folke/noice.nvim
 			vim.api.nvim_set_keymap("n", "<Leader><Leader>w", "<Plug>(easymotion-s2)", {})
 		end,
 	}, -- nvim v0.8.0
@@ -1137,6 +1203,15 @@ require("lazy").setup({
 						},
 					})
 				end,
+				-- ["p4_analyzer"] = function()
+				-- 	-- Ensure the P4 Analyzer LSP is correctly configured
+				-- 	lspconfig.p4_analyzer.setup({
+				-- 		cmd = { "/path/to/p4-analyzer" }, -- REPLACE with the correct binary path
+				-- 		filetypes = { "p4" }, -- Associate LSP with .p4 files
+				-- 		root_dir = lspconfig.util.find_git_ancestor, -- Adjust if needed
+				-- 		capabilities = capabilities,
+				-- 	})
+				-- end,
 			})
 		end,
 	},
@@ -1293,7 +1368,6 @@ require("lazy").setup({
 				additional_vim_regex_highlighting = { "ruby" },
 			},
 			indent = { enable = true, disable = { "ruby" } },
-			autotag = { enable = true },
 		},
 		config = function(_, opts)
 			-- [[ Configure Treesitter ]] See `:help nvim-treesitter`
@@ -1309,6 +1383,13 @@ require("lazy").setup({
 			--    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
 			--    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
 			--    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+		end,
+	},
+	{
+		"windwp/nvim-ts-autotag",
+		opts = {},
+		config = function()
+			require("nvim-ts-autotag").setup()
 		end,
 	},
 
