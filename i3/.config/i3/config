@@ -76,50 +76,10 @@ bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 10%- && $re
 # Print screen
 bindsym Print exec maim -s -u | xclip -selection clipboard -t image/png -i
 
-bindsym $mod+Shift+s exec --no-startup-id sh -c '~/.config/i3/scripts/display-setup.sh && feh --bg-scale $wallpaper'
-# bindsym $mod+Shift+d exec --no-startup-id sh -c '~/.config/i3/scripts/display-setup.sh'
+bindsym $mod+Shift+d exec --no-startup-id sh -c '~/.config/i3/scripts/display-setup.sh && feh --bg-scale $wallpaper'
+
 
 # Workspace Setups
-# bindsym $mod+Shift+d exec ~/.config/i3/scripts/desk_workspace_setup.sh
-# bindsym $mod+Shift+l exec ~/.config/i3/scripts/laptop_workspace_setup.sh
-# bindsym $mod+Shift+p exec ~/.config/i3/scripts/project_desk_workspace_setup.sh
-# Define the "layout" mode
-mode "layout" {
-    # Sub-mode for selecting laptop
-    bindsym l mode "laptop"
-
-    # Sub-mode for selecting desktop
-    bindsym d mode "desk"
-
-    bindsym Escape mode "default"
-}
-
-# Define the "laptop" mode
-mode "laptop" {
-    # Normal laptop workspace setup
-    bindsym n exec ~/.config/i3/scripts/workspace_layouts/laptop/normal.sh, mode "default"
-
-    # Project laptop workspace setup
-    bindsym p exec ~/.config/i3/scripts/workspace_layouts/laptop/project.sh, mode "default"
-
-    # Spotify laptop workspace setup
-    bindsym s exec ~/.config/i3/scripts/workspace_layouts/laptop/spotify.sh, mode "default"
-}
-
-# Define the "desk" mode
-mode "desk" {
-    # Normal desktop workspace setup
-    bindsym n exec ~/.config/i3/scripts/workspace_layouts/desk/normal.sh, mode "default"
-
-    # Project desktop workspace setup
-    bindsym p exec ~/.config/i3/scripts/workspace_layouts/desk/project.sh, mode "default"
-
-    # Spotify laptop workspace setup
-    bindsym s exec ~/.config/i3/scripts/workspace_layouts/desk/spotify.sh, mode "default"
-}
-
-# Activate the layout mode with mod+l
-# bindsym $mod+Shift+l mode "layout"
 bindsym $mod+Shift+l exec ~/.config/i3/scripts/workspace_layouts/rofi_ui_chooser.sh
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -141,7 +101,7 @@ bindsym $mod+Return exec wezterm
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id dmenu_run
+bindsym $mod+d exec --no-startup-id dmenu_run -nb '#1a1b26' -nf '#c0caf5' -sb '#7aa2f7' -sf '#1a1b26'
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a

@@ -10,7 +10,7 @@ ln -sf ~/dotfiles/scripts/tmux-sessionizer ~/.local/bin/tmux-sessionizer
 echo "Stowing dotfiles..."
 
 # List of directories to stow
-DIRS=("backgrounds" "bashrc" "bat" "nvim" "picom" "polybar" "starship" "tmux" "wezterm")
+DIRS=("backgrounds" "bashrc" "bat" "i3" "nvim" "picom" "polybar" "rofi" "starship" "tmux" "wezterm")
 
 # Loop over each directory and use stow to symlink
 for dir in "${DIRS[@]}"; do

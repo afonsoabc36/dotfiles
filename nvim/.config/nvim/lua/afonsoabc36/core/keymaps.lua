@@ -42,13 +42,13 @@ keymap.set("n", "<leader>ft", vim.cmd.Ex, { desc = "Go to File Tree" })
 
 -- Create new file in file explorer
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = "netrw",
-	callback = function()
-		-- Create a new file with 'f'
-		keymap.set({ "n", "v" }, "f", function()
-			vim.fn.feedkeys("%")
-		end, { buffer = true, desc = "Create new file in netrw" })
-	end,
+    pattern = "netrw",
+    callback = function()
+        -- Create a new file with 'f'
+        keymap.set({ "n", "v" }, "f", function()
+            vim.fn.feedkeys("%")
+        end, { buffer = true, desc = "Create new file in netrw" })
+    end,
 })
 
 -- Increment/decrement numbers
@@ -78,15 +78,16 @@ keymap.set("x", "<leader>P", [["_dP]], { desc = "[P]aste and replace text select
 -- Delete without copying to the paste clipboard
 keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 -- Insert a new line below the current line in normal mode
-keymap.set({ "n", "v" }, "<Enter>", "i<Enter><Esc>", { desc = "Insert new line below in normal mode" })
+keymap.set({ "n", "v" }, "<Enter>", "o<Esc>", { desc = "Insert new line below in normal mode" })
+keymap.set({ "n", "v" }, "<S-Enter>", "i<Enter><Esc>", { desc = "Insert new line below in normal mode" })
 -- Ctrl-c to go back to normal mode
 keymap.set("i", "<C-c>", "<Esc>")
 -- Substitute word under cursor
 keymap.set(
-	"n",
-	"<leader>fr",
-	[[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gIc<Left><Left><Left><Left>]],
-	{ desc = "[S]ubstitutue word under the cursor" }
+    "n",
+    "<leader>fr",
+    [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gIc<Left><Left><Left><Left>]],
+    { desc = "[S]ubstitutue word under the cursor" }
 )
 -- Temux
 -- keymap.set("n", "<C->", "<cmd>silent !~/scripts/tmux-sessionizer<CR>")
@@ -105,16 +106,12 @@ keymap.set("n", "<right>", '<cmd>echo "Use l to move!!"<CR>')
 keymap.set("n", "<up>", '<cmd>echo "Use k to move!!"<CR>')
 keymap.set("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
 
-keymap.set("n", "<leader>tt", require("treesj").toggle, { desc = "[T]oggle [T]reesj" })
-keymap.set("n", "<leader>te", require("treesj").split, { desc = "[T]oggle [E]xpand Code Block" }) -- Expand to multiple lines
-keymap.set("n", "<leader>tc", require("treesj").join, { desc = "[T]oggle [C]olapse Code Block" }) -- Colapse to single line
-
 keymap.set("n", "<leader>mp", ":MarkdownPreview<CR>", { desc = "Start markdown preview" })
 keymap.set("n", "<leader>ms", ":MarkdownPreviewStop<CR>", { desc = "Stop markdown preview" })
 
 keymap.set("n", "<C-p>", vim.cmd.cprev)
 keymap.set("n", "<C-n>", vim.cmd.cnext)
-keymap.set("n", "<C-j>", vim.cmd.split) -- Open a new horizontal split
-keymap.set("n", "<C-l>", vim.cmd.vsplit) -- Open a new vertical split
+keymap.set("n", "<leader>sj", vim.cmd.split) -- Open a new horizontal split
+keymap.set("n", "<leader>sl", vim.cmd.vsplit) -- Open a new vertical split
 keymap.set({ "n", "v" }, "s", "", { noremap = true }) -- Disable s motion, it eliminates a character and goes to insert mode
 keymap.set("n", "<C-b>", "<C-o>", { desc = "Go [B]ack" })

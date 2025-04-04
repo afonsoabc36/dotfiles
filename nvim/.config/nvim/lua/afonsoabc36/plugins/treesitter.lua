@@ -1,38 +1,40 @@
 return { -- Highlight, edit, and navigate code
 	"nvim-treesitter/nvim-treesitter",
 	event = { "BufReadPre", "BufNewFile" },
-	build = function()
-		local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
-		ts_update()
-	end,
+	build = ":TSUpdate",
+	dependencies = { "windwp/nvim-ts-autotag" },
+	config = function()
+		local treesitter = require("nvim-treesitter.configs")
 
-	opts = {
-		ensure_installed = {
-			"c",
-			"c_sharp",
-			"diff",
-			"html",
-			"javascript",
-			"json",
-			"lua",
-			"luadoc",
-			"markdown",
-			"python",
-			"vim",
-			"vimdoc",
-			"go",
-		},
-		-- Autoinstall languages that are not installed
-		auto_install = true,
-		highlight = {
-			enable = true,
-			additional_vim_regex_highlighting = { "ruby" },
-		},
-		indent = { enable = true, disable = { "ruby" } },
-	},
-	config = function(_, opts)
-		require("nvim-treesitter.install").prefer_git = true
-		---@diagnostic disable-next-line: missing-fields
-		require("nvim-treesitter.configs").setup(opts)
+		treesitter.setup({
+			auto_install = true,
+			highlight = { enable = true },
+			indent = { enable = true },
+			autotag = { enable = true },
+			ensure_installed = {
+				"c",
+				"c_sharp",
+				"diff",
+				"html",
+				"javascript",
+				"json",
+				"lua",
+				"luadoc",
+				"markdown",
+				"python",
+				"vim",
+				"vimdoc",
+				"go",
+			},
+			incremental_selection = {
+				enable = true,
+				keymaps = {
+					init_selection = "<C-space>",
+					node_incremental = "<C-space>",
+					scope_incremental = false,
+					node_decremental = "<bs>",
+				},
+			},
+		})
 	end,
 }

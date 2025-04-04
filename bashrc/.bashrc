@@ -259,9 +259,9 @@ nprptp="$HOME/Desktop/4ano/2Semestre/NPR/Projeto/G3App"
 alias nprs='cd ~/Desktop/4ano/2Semestre/NPR/Slides/'
 
 rfm() { if [ -z "$1" ]; then cd "$HOME/Desktop/4ano/2Semestre/RFM/"; else target_dir="$HOME/Desktop/4ano/2Semestre/RFM/${1}Aula"; if [ ! -d "$target_dir" ]; then echo "Directory not found!"; else cd "$target_dir"; fi; fi; }
-rfmtp() { if [ -z "$1" ]; then cd "$HOME/Desktop/4ano/2Semestre/RFM/Projeto/TP1/"; else target_dir="$HOME/Desktop/4ano/2Semestre/RFM/Projeto/TP${1}"; if [ ! -d "$target_dir" ]; then echo "Directory not found!"; else cd "$target_dir"; fi; fi; }
+rfmtp() { if [ -z "$1" ]; then cd "$HOME/Desktop/4ano/2Semestre/RFM/Projeto/TP2/"; else target_dir="$HOME/Desktop/4ano/2Semestre/RFM/Projeto/TP${1}"; if [ ! -d "$target_dir" ]; then echo "Directory not found!"; else cd "$target_dir"; fi; fi; }
 rfmp="$HOME/Desktop/4ano/2Semestre/RFM"
-rfmptp="$HOME/Desktop/4ano/2Semestre/RFM/Projeto"
+rfmptp="$HOME/Desktop/4ano/2Semestre/RFM/Projeto/TP2"
 alias rfms='cd ~/Desktop/4ano/2Semestre/RFM/Slides/'
 
 rpcw() { if [ -z "$1" ]; then cd "$HOME/Desktop/4ano/2Semestre/RPCW/"; else target_dir="$HOME/Desktop/4ano/2Semestre/RPCW/${1}Aula"; if [ ! -d "$target_dir" ]; then echo "Directory not found!"; else cd "$target_dir"; fi; fi; }
@@ -273,8 +273,8 @@ rpcwtpc() { if [ -z "$1" ]; then cd "$HOME/Desktop/4ano/2Semestre/RPCW/RPCW2025/
 
 rds() { if [ -z "$1" ]; then cd "$HOME/Desktop/4ano/2Semestre/RDS/"; else target_dir="$HOME/Desktop/4ano/2Semestre/RDS/${1}Aula"; if [ ! -d "$target_dir" ]; then echo "Directory not found!"; else cd "$target_dir"; fi; fi; }
 rdsp="$HOME/Desktop/4ano/2Semestre/RDS"
-alias rdstp='cd ~/Desktop/4ano/2Semestre/RDS/Projeto/'
-rdsptp="$HOME/Desktop/4ano/2Semestre/RDS/Projeto"
+alias rdstp='cd ~/Desktop/4ano/2Semestre/RDS/Projeto/RDS-MLSPNetwork/'
+rdsptp="$HOME/Desktop/4ano/2Semestre/RDS/Projeto/RDS-MLSPNetwork"
 alias rdss='cd ~/Desktop/4ano/2Semestre/RDS/Slides/'
 
 spln() { if [ -z "$1" ]; then cd "$HOME/Desktop/4ano/2Semestre/SPLN/"; else target_dir="$HOME/Desktop/4ano/2Semestre/SPLN/${1}Aula"; if [ ! -d "$target_dir" ]; then echo "Directory not found!"; else cd "$target_dir"; fi; fi; }
@@ -334,3 +334,4 @@ echo -e  "                 I'm a programmer                 I make computer go b
 
 # Syntax Highlighting
 #source ~/.local/share/blesh/ble.sh
+export PATH="/home/linuxbrew/.linuxbrew/opt/python@3.12/bin:$PATH"

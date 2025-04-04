@@ -77,12 +77,20 @@ return {
 					capabilities = capabilities,
 					settings = {
 						Lua = {
+							workspace = {
+								-- Prevents scanning the entire home directory
+								library = vim.api.nvim_get_runtime_file("", true),
+								checkThirdParty = false,
+							},
 							-- make the language server recognize "vim" global
 							diagnostics = {
 								globals = { "vim" },
 							},
 							completion = {
 								callSnippet = "Replace",
+							},
+							telemetry = {
+								enabled = false,
 							},
 						},
 					},
