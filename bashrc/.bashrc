@@ -82,7 +82,7 @@ alias ts='tmux-sessionizer'
 
 alias f='thunar . > /dev/null 2>&1 &'
 alias config='nvim ~/.bashrc'
-alias nconfig='nvim ~/.config/nvim/init.lua'
+alias nconfig='nvim ~/.config/nvim/'
 alias wconfig='nvim ~/.wezterm.lua'
 alias sconfig='nvim ~/.config/starship.toml'
 alias tconfig='nvim ~/.tmux.conf'
@@ -103,7 +103,9 @@ alias gp='git pull'
 alias gP='git push'
 alias gs='git status'
 alias ga='git add'
+alias ga.='git add .'
 alias gc='git commit'
+alias gcm='git commit -m'
 alias sp='spotify_player'
 alias bluetooth='bluetoothctl'
 alias bonsai='cbonsai --life 50 --live --infinite --screensaver'
@@ -120,6 +122,17 @@ alias shut='shutdown now'
 alias ld='lsblk'
 alias bch='bluetoothctl connect FC:58:FA:13:72:62'
 alias bck='bluetoothctl connect DC:2C:26:DB:98:6A'
+alias bce='bluetoothctl connect E0:67:81:73:EC:81'
+alias please='sudo'
+alias pls='sudo'
+alias sduo='sudo'
+alias suod='sudo'
+alias sai='sudo apt install'
+alias sau='sudo apt update'
+alias pmpi='python3 -m pip install'
+alias bsp='--break-system-packages'
+alias p3='python3'
+alias aliasg='alias | rg'
 
 # Last alias (For faster searching and adding of alias)
 
@@ -335,3 +348,4 @@ echo -e  "                 I'm a programmer                 I make computer go b
 # Syntax Highlighting
 #source ~/.local/share/blesh/ble.sh
 export PATH="/home/linuxbrew/.linuxbrew/opt/python@3.12/bin:$PATH"
+. "/home/afonsoabc36/.deno/env"

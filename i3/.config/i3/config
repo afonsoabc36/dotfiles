@@ -23,6 +23,7 @@ exec --no-startup-id picom
 exec --no-startup-id xinput | grep "SYNA3602:00 093A:0255 Touchpad" | cut -f2 | cut -c4- | xargs -I{} xinput set-prop {} "libinput Tapping Enabled" 1
 exec --no-startup-id xinput | grep "SYNA3602:00 093A:0255 Touchpad" | cut -f2 | cut -c4- | xargs -I{} xinput set-prop {} "libinput Natural Scrolling Enabled" 1
 exec --no-startup-id sh -c '~/.config/i3/scripts/display-setup.sh && feh --bg-scale $wallpaper'
+exec --no-startup-id sh -c '~/.config/i3/scripts/redshift-toggle.sh'
 # exec --no-startup-id sh -c '~/.config/i3/scripts/display-setup.sh'
 exec_always --no-startup-id ~/.config/polybar/launch_polybar.sh
 # wallpaper/packground
@@ -64,8 +65,8 @@ hide_edge_borders smart
 # System keybinds
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
@@ -78,6 +79,7 @@ bindsym Print exec maim -s -u | xclip -selection clipboard -t image/png -i
 
 bindsym $mod+Shift+d exec --no-startup-id sh -c '~/.config/i3/scripts/display-setup.sh && feh --bg-scale $wallpaper'
 
+bindsym $mod+Shift+b exec --no-startup-id sh -c '~/.config/i3/scripts/redshift-toggle.sh'
 
 # Workspace Setups
 bindsym $mod+Shift+l exec ~/.config/i3/scripts/workspace_layouts/rofi_ui_chooser.sh

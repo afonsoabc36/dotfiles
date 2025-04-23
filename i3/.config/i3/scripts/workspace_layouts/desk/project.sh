@@ -27,13 +27,13 @@ i3-msg "workspace 2; exec google-chrome"
 wait_for_window_in_workspace "Google-chrome" "2"
 
 # Open Chrome in workspace 3 (Secondary monitor)
-i3-msg "workspace 3; move workspace to output eDP1; exec google-chrome"
+i3-msg "workspace 3; move workspace to output eDP1; exec google-chrome youtube.com"
 wait_for_window_in_workspace "Google-chrome" "3"
 
 # Open Discord in workspace 9 (Secondary monitor)
 i3-msg "workspace 9; exec discord"
 wait_for_window_in_workspace "discord" "9"
-sleep 6 # Discord takes a while to load
+sleep 10 # Discord takes a while to load
 
 # Focus back to workspaces 2
 i3-msg "workspace 2"
