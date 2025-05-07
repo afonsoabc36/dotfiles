@@ -28,6 +28,7 @@ wait_for_window_in_workspace "Google-chrome" "2"
 
 # Open Chrome in workspace 3 (Secondary monitor)
 i3-msg "workspace 3; move workspace to output eDP1; exec google-chrome"
+i3-msg "exec google-chrome youtube.com"
 wait_for_window_in_workspace "Google-chrome" "3"
 
 # Focus back to workspace 2
