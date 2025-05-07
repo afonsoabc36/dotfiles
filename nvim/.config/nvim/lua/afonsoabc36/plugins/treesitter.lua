@@ -2,7 +2,10 @@ return { -- Highlight, edit, and navigate code
   "nvim-treesitter/nvim-treesitter",
   event = { "BufReadPre", "BufNewFile" },
   build = ":TSUpdate",
-  dependencies = { "windwp/nvim-ts-autotag" },
+  dependencies = {
+    "windwp/nvim-ts-autotag",
+    "nvim-treesitter/nvim-treesitter-textobjects",
+  },
   config = function()
     local treesitter = require("nvim-treesitter.configs")
 
