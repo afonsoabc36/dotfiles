@@ -260,8 +260,8 @@ alias 4a2='cd ~/Desktop/4ano/2Semestre/'
 
 eg() { if [ -z "$1" ]; then cd "$HOME/Desktop/4ano/2Semestre/EG/"; else target_dir="$HOME/Desktop/4ano/2Semestre/EG/${1}Aula"; if [ ! -d "$target_dir" ]; then echo "Directory not found!"; else cd "$target_dir"; fi; fi; }
 egp="$HOME/Desktop/4ano/2Semestre/EG"
-egptp="$HOME/Desktop/4ano/2Semestre/EG/Projeto"
-egtp() { if [ -z "$1" ]; then cd "$HOME/Desktop/4ano/2Semestre/EG/Projeto/"; else target_dir="$HOME/Desktop/4ano/2Semestre/EG/Projeto/${1}TP"; if [ ! -d "$target_dir" ]; then echo "Directory not found!"; else cd "$target_dir"; fi; fi; }
+egptp="$HOME/Desktop/4ano/2Semestre/EG/Projeto/2TP"
+egtp() { if [ -z "$1" ]; then cd "$HOME/Desktop/4ano/2Semestre/EG/Projeto/2TP/"; else target_dir="$HOME/Desktop/4ano/2Semestre/EG/Projeto/${1}TP"; if [ ! -d "$target_dir" ]; then echo "Directory not found!"; else cd "$target_dir"; fi; fi; }
 alias egs='cd ~/Desktop/4ano/2Semestre/EG/Slides/'
 egtpc() { if [ -z "$1" ]; then cd "$HOME/Desktop/4ano/2Semestre/EG/TPC/"; else target_dir="$HOME/Desktop/4ano/2Semestre/EG/TPC/TPC${1}"; if [ ! -d "$target_dir" ]; then echo "Directory not found!"; else cd "$target_dir"; fi; fi; }
 
@@ -292,8 +292,8 @@ alias rdss='cd ~/Desktop/4ano/2Semestre/RDS/Slides/'
 
 spln() { if [ -z "$1" ]; then cd "$HOME/Desktop/4ano/2Semestre/SPLN/"; else target_dir="$HOME/Desktop/4ano/2Semestre/SPLN/${1}Aula"; if [ ! -d "$target_dir" ]; then echo "Directory not found!"; else cd "$target_dir"; fi; fi; }
 splnp="$HOME/Desktop/4ano/2Semestre/SPLN"
-alias splntp='cd ~/Desktop/4ano/2Semestre/SPLN/Projeto/'
-splnptp="$HOME/Desktop/4ano/2Semestre/SPLN/Projeto"
+alias splntp='cd ~/Desktop/4ano/2Semestre/SPLN/Projeto/SPLNTP1'
+splnptp="$HOME/Desktop/4ano/2Semestre/SPLN/Projeto/SPLNTP1"
 alias splns='cd ~/Desktop/4ano/2Semestre/SPLN/Slides/'
 splntpc() { if [ -z "$1" ]; then cd "$HOME/Desktop/4ano/2Semestre/SPLN/SPLN/"; else target_dir="$HOME/Desktop/4ano/2Semestre/SPLN/SPLN/TPC${1}"; if [ ! -d "$target_dir" ]; then echo "Directory not found!"; else cd "$target_dir"; fi; fi; }
 
