@@ -44,7 +44,8 @@ keymap.set("n", "<leader>cd", function()
 end, { desc = "[C]opy a line [D]own" })
 
 -- Open file explorer
-keymap.set("n", "<leader>ft", vim.cmd.Explore, { desc = "Go to [F]ile [T]ree" })
+-- keymap.set("n", "<leader>ft", vim.cmd.Explore, { desc = "Go to [F]ile [T]ree" })
+keymap.set("n", "<leader>ft", vim.cmd.Oil, { desc = "Go to [F]ile [T]ree" })
 
 -- Create new file in file explorer
 vim.api.nvim_create_autocmd("FileType", {
