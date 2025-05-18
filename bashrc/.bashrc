@@ -25,13 +25,19 @@ shopt -s checkwinsize
 #############
 ## EXPORTS ##
 #############
-export HISTSIZE=500
-export HISTFILESIZE=10000
+export HISTSIZE=10000
+export HISTFILESIZE=20000
 export HISTTIMEFORMAT="| %F %T | " # Add timestamp to history
-export HISTCONTROL=erasedups:ignoredups:ignorespace
+export HISTCONTROL=erasedups:ignorespace
 export EDITOR=nvim
 export VISUAL=nvim
 export BAT_THEME=tokyonight_night
+# Sync history across tmux panes
+export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
+alias hl='history -n'  # History load
+alias hn='history -n'  # History load
+# Bind Ctrl+R to load then reverse search
+bind '"\er": "\C-a history -n\C-m\C-r"'
 
 
 ###################
@@ -135,6 +141,7 @@ alias pmpi='python3 -m pip install'
 alias bsp='--break-system-packages'
 alias p3='python3'
 alias aliasg='alias | rg'
+alias kd='killall Discord'
 
 # Last alias (For faster searching and adding of alias)
 
@@ -274,9 +281,11 @@ nprptp="$HOME/Desktop/4ano/2Semestre/NPR/Projeto/G3App"
 alias nprs='cd ~/Desktop/4ano/2Semestre/NPR/Slides/'
 
 rfm() { if [ -z "$1" ]; then cd "$HOME/Desktop/4ano/2Semestre/RFM/"; else target_dir="$HOME/Desktop/4ano/2Semestre/RFM/${1}Aula"; if [ ! -d "$target_dir" ]; then echo "Directory not found!"; else cd "$target_dir"; fi; fi; }
-rfmtp() { if [ -z "$1" ]; then cd "$HOME/Desktop/4ano/2Semestre/RFM/Projeto/TP2/"; else target_dir="$HOME/Desktop/4ano/2Semestre/RFM/Projeto/TP${1}"; if [ ! -d "$target_dir" ]; then echo "Directory not found!"; else cd "$target_dir"; fi; fi; }
+rfmtp() {
+    if [ -z "$1" ]; then cd "$HOME/Desktop/4ano/2Semestre/RFM/Projeto/TP3/"; else target_dir="$HOME/Desktop/4ano/2Semestre/RFM/Projeto/TP${1}"; if [ ! -d "$target_dir" ]; then echo "Directory not found!"; else cd "$target_dir"; fi; fi
+}
 rfmp="$HOME/Desktop/4ano/2Semestre/RFM"
-rfmptp="$HOME/Desktop/4ano/2Semestre/RFM/Projeto/TP2"
+rfmptp="$HOME/Desktop/4ano/2Semestre/RFM/Projeto/TP3"
 alias rfms='cd ~/Desktop/4ano/2Semestre/RFM/Slides/'
 
 rpcw() { if [ -z "$1" ]; then cd "$HOME/Desktop/4ano/2Semestre/RPCW/"; else target_dir="$HOME/Desktop/4ano/2Semestre/RPCW/${1}Aula"; if [ ! -d "$target_dir" ]; then echo "Directory not found!"; else cd "$target_dir"; fi; fi; }
@@ -294,8 +303,8 @@ alias rdss='cd ~/Desktop/4ano/2Semestre/RDS/Slides/'
 
 spln() { if [ -z "$1" ]; then cd "$HOME/Desktop/4ano/2Semestre/SPLN/"; else target_dir="$HOME/Desktop/4ano/2Semestre/SPLN/${1}Aula"; if [ ! -d "$target_dir" ]; then echo "Directory not found!"; else cd "$target_dir"; fi; fi; }
 splnp="$HOME/Desktop/4ano/2Semestre/SPLN"
-alias splntp='cd ~/Desktop/4ano/2Semestre/SPLN/Projeto/SPLNTP1'
-splnptp="$HOME/Desktop/4ano/2Semestre/SPLN/Projeto/SPLNTP1"
+alias splntp='cd ~/Desktop/4ano/2Semestre/SPLN/Projeto/SPLNTP2'
+splnptp="$HOME/Desktop/4ano/2Semestre/SPLN/Projeto/SPLNTP2"
 alias splns='cd ~/Desktop/4ano/2Semestre/SPLN/Slides/'
 splntpc() { if [ -z "$1" ]; then cd "$HOME/Desktop/4ano/2Semestre/SPLN/SPLN/"; else target_dir="$HOME/Desktop/4ano/2Semestre/SPLN/SPLN/TPC${1}"; if [ ! -d "$target_dir" ]; then echo "Directory not found!"; else cd "$target_dir"; fi; fi; }
 
