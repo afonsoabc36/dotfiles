@@ -25,22 +25,22 @@ return {
 
     if vim.g.md_heading_bg == "transparent" then
       vim.cmd(string.format([[highlight Headline1Bg guibg=%s guifg=%s]], colors.blue, colors.bg))
-      vim.cmd(string.format([[highlight Headline2Bg guibg=%s guifg=%s]], colors.green, colors.bg))
-      vim.cmd(string.format([[highlight Headline3Bg guibg=%s guifg=%s]], colors.yellow, colors.bg))
+      vim.cmd(string.format([[highlight Headline2Bg guibg=%s guifg=%s]], colors.yellow, colors.bg))
+      vim.cmd(string.format([[highlight Headline3Bg guibg=%s guifg=%s]], colors.green, colors.bg))
       vim.cmd(string.format([[highlight Headline4Bg guibg=%s guifg=%s]], colors.orange, colors.bg))
       vim.cmd(string.format([[highlight Headline5Bg guibg=%s guifg=%s]], colors.red, colors.bg))
       vim.cmd(string.format([[highlight Headline6Bg guibg=%s guifg=%s]], colors.purple, colors.bg))
 
       vim.cmd(string.format([[highlight Headline1Fg cterm=bold gui=bold guifg=%s]], colors.blue))
-      vim.cmd(string.format([[highlight Headline2Fg cterm=bold gui=bold guifg=%s]], colors.green))
-      vim.cmd(string.format([[highlight Headline3Fg cterm=bold gui=bold guifg=%s]], colors.yellow))
+      vim.cmd(string.format([[highlight Headline2Fg cterm=bold gui=bold guifg=%s]], colors.yellow))
+      vim.cmd(string.format([[highlight Headline3Fg cterm=bold gui=bold guifg=%s]], colors.green))
       vim.cmd(string.format([[highlight Headline4Fg cterm=bold gui=bold guifg=%s]], colors.orange))
       vim.cmd(string.format([[highlight Headline5Fg cterm=bold gui=bold guifg=%s]], colors.red))
       vim.cmd(string.format([[highlight Headline6Fg cterm=bold gui=bold guifg=%s]], colors.purple))
     else
       vim.cmd(string.format([[highlight Headline1Bg guifg=%s guibg=%s]], colors.bg, colors.blue))
-      vim.cmd(string.format([[highlight Headline2Bg guifg=%s guibg=%s]], colors.bg, colors.green))
-      vim.cmd(string.format([[highlight Headline3Bg guifg=%s guibg=%s]], colors.bg, colors.yellow))
+      vim.cmd(string.format([[highlight Headline2Bg guifg=%s guibg=%s]], colors.bg, colors.yellow))
+      vim.cmd(string.format([[highlight Headline3Bg guifg=%s guibg=%s]], colors.bg, colors.green))
       vim.cmd(string.format([[highlight Headline4Bg guifg=%s guibg=%s]], colors.bg, colors.orange))
       vim.cmd(string.format([[highlight Headline5Bg guifg=%s guibg=%s]], colors.bg, colors.red))
       vim.cmd(string.format([[highlight Headline6Bg guifg=%s guibg=%s]], colors.bg, colors.purple))
