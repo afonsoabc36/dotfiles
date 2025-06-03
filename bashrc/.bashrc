@@ -81,6 +81,7 @@ alias +x='chmod +x'
 alias km='xmodmap ~/.Xmodmap'
 
 alias ta='tmux attach -t'
+alias ta0='tmux attach -t 0'
 alias tl='tmux list-sessions'
 alias tn='tmux new-session -s'
 alias tk='tmux kill-session -t'
@@ -98,11 +99,15 @@ alias pconfig='nvim ~/.config/picom.conf'
 alias poconfig='nvim ~/.config/polybar/config.ini'
 alias sb='source ~/.bashrc'
 alias down='cd ~/Downloads/'
+downp="$HOME/Downloads"
+dp="$HOME/Downloads"
+alias ld='l ~/Downloads'
 alias .config='cd ~/.config/'
 alias dotfiles='cd ~/dotfiles/'
 alias nvimswap='cd ~/.local/state/nvim/swap/'
 alias chrome='google-chrome'
 alias c='google-chrome'
+alias o='open'
 alias stremio='nohup flatpak run com.stremio.Stremio > /dev/null 2>&1 &'
 alias lg='lazygit'
 alias gp='git pull'
@@ -127,7 +132,6 @@ alias setvolume='pactl set-sink-volume @DEFAULT_SINK@'
 alias sv='pactl set-sink-volume @DEFAULT_SINK@'
 alias sus='systemctl suspend'
 alias shut='shutdown now'
-alias ld='lsblk'
 alias bch='bluetoothctl connect FC:58:FA:13:72:62'
 alias bck='bluetoothctl connect DC:2C:26:DB:98:6A'
 alias bce='bluetoothctl connect E0:67:81:73:EC:81'
@@ -287,11 +291,12 @@ rfmtp() {
 rfmp="$HOME/Desktop/4ano/2Semestre/RFM"
 rfmptp="$HOME/Desktop/4ano/2Semestre/RFM/Projeto/TP3"
 alias rfms='cd ~/Desktop/4ano/2Semestre/RFM/Slides/'
+alias rfmt='cd ~/Desktop/4ano/2Semestre/RFM/Teste/'
 
 rpcw() { if [ -z "$1" ]; then cd "$HOME/Desktop/4ano/2Semestre/RPCW/"; else target_dir="$HOME/Desktop/4ano/2Semestre/RPCW/${1}Aula"; if [ ! -d "$target_dir" ]; then echo "Directory not found!"; else cd "$target_dir"; fi; fi; }
 rpcwp="$HOME/Desktop/4ano/2Semestre/RPCW"
-alias rpcwtp='cd ~/Desktop/4ano/2Semestre/RPCW/Projeto/'
-rpcwptp="$HOME/Desktop/4ano/2Semestre/RPCW/Projeto"
+alias rpcwtp='cd ~/Desktop/4ano/2Semestre/RPCW/Projeto/RPCW_DAD/'
+rpcwptp="$HOME/Desktop/4ano/2Semestre/RPCW/Projeto/RPCW_DAD"
 alias rpcws='cd ~/Desktop/4ano/2Semestre/RPCW/Slides/'
 rpcwtpc() { if [ -z "$1" ]; then cd "$HOME/Desktop/4ano/2Semestre/RPCW/RPCW2025/"; else target_dir="$HOME/Desktop/4ano/2Semestre/RPCW/RPCW2025/TP${1}/"; if [ ! -d "$target_dir" ]; then echo "Directory not found!"; else cd "$target_dir"; fi; fi; }
 
