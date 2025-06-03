@@ -68,4 +68,4 @@ local function export_picker()
 end
 
 vim.api.nvim_create_user_command("ExportPicker", export_picker, {})
-vim.keymap.set("n", "<leader>e", ":ExportPicker<CR>", { silent = true })
+vim.keymap.set("n", "<leader>ee", ":ExportPicker<CR>", { silent = true })
