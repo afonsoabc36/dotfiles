@@ -22,15 +22,15 @@ i3-msg "workspace 1; move workspace to output DP1; exec wezterm"
 wait_for_window_in_workspace "org.wezfurlong.wezterm" "1"
 wezterm cli spawn -- bash -c "tmux"
 
+# Open Chrome in workspace 3 (Secondary monitor)
+i3-msg "workspace 3; move workspace to output eDP1; exec google-chrome youtube.com"
+wait_for_window_in_workspace "Google-chrome" "3"
+# sleep 1
+
 # Open Chrome in workspace 2 (Primary monitor)
-i3-msg "workspace 2; exec google-chrome"
+i3-msg "workspace 2; move workspace to output DP1; exec google-chrome"
 wait_for_window_in_workspace "Google-chrome" "2"
 
-# Open Chrome in workspace 3 (Secondary monitor)
-i3-msg "workspace 3; move workspace to output eDP1; exec google-chrome"
-i3-msg "exec google-chrome youtube.com"
-wait_for_window_in_workspace "Google-chrome" "3"
-
 # Focus back to workspace 2
-i3-msg "workspace 2"
+# i3-msg "workspace 2"
 

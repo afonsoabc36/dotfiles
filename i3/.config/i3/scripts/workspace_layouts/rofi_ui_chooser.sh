@@ -10,7 +10,7 @@ if [ -z "$MODE" ]; then
 fi
 
 # Step 2: Choose normal, project, or spotify based on the selected mode
-LAYOUT=$(echo -e "normal\nproject\nspotify" | rofi -dmenu -p "Select Layout for $MODE:")
+LAYOUT=$(echo -e "normal\nproject\nyoutube-music" | rofi -dmenu -p "Select Layout for $MODE:")
 
 # Check if layout is selected
 if [ -z "$LAYOUT" ]; then

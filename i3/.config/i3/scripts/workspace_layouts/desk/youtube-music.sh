@@ -26,10 +26,9 @@ wezterm cli spawn -- bash -c "tmux"
 i3-msg "workspace 2; exec google-chrome"
 wait_for_window_in_workspace "Google-chrome" "2"
 
-# Open spotify-player in workspace 7 (Secondary monitor)
-i3-msg "workspace 7; move workspace to output eDP1; exec wezterm"
-wait_for_window_in_workspace "org.wezfurlong.wezterm" "7"
-wezterm cli spawn --pane-id 2 -- bash -c "spotify_player"
+# Open youtube-music in workspace 7 (Secondary monitor)
+i3-msg "workspace 7; move workspace to output eDP1; exec youtube-music"
+wait_for_window_in_workspace "com.github.th_ch.youtube_music" "7"
 
 # Focus back to workspace 2
 i3-msg "workspace 2"

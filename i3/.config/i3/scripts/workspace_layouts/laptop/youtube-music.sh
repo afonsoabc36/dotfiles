@@ -30,11 +30,10 @@ wezterm cli spawn -- bash -c "tmux"
 i3-msg "workspace 2; exec google-chrome"
 wait_for_window_in_workspace "Google-chrome" "2"
 
-# Open WezTerm in workspace 7 for Spotify and wait for it
-i3-msg "workspace 7; exec wezterm"
-wait_for_window_in_workspace "org.wezfurlong.wezterm" "7"
-wezterm cli spawn --pane-id 2 -- bash -c "spotify_player"
-# echo "Opened spotify_player" | tee -a "$LOGFILE"
+# Open Youtube Music in workspace 7 and wait for it
+i3-msg "workspace 7; exec youtube-music"
+wait_for_window_in_workspace "com.github.th_ch.youtube_music" "7"
+# echo "Opened youtube-music" | tee -a "$LOGFILE"
 
 # echo "Going to sleep" | tee -a "$LOGFILE"
 # sleep 1
