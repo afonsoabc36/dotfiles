@@ -5,7 +5,7 @@ local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
 config.font = wezterm.font("FiraCode Nerd Font Mono")
-config.font_size = 12
+config.font_size = 24
 config.initial_cols = 91
 config.initial_rows = 52
 
@@ -27,7 +27,8 @@ config.color_scheme = "tokyonight_night"
 -- 	brights = { "#214969", "#E52E2E", "#44FFB1", "#FFE073", "#A277FF", "#a277ff", "#24EAF7", "#24EAF7" },
 -- }
 
-config.window_background_opacity = 0.8
+config.window_background_opacity = 1.0
+config.text_background_opacity = 1.0
 
 config.default_prog = { "/bin/bash", "-l" }
 
