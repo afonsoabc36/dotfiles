@@ -25,6 +25,7 @@ return {
       },
       keymaps = {
         ["<C-c>"] = false,
+        ["<C-h>"] = false,
         ["q"] = "actions.close",
       },
     })
