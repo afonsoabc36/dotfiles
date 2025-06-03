@@ -49,6 +49,13 @@ return {
     vim.cmd(string.format([[highlight RenderMarkdownCodeInline guifg=%s guibg=%s]], inline_fg, inline_bg))
   end,
   opts = {
+    -- callouts = {
+    --   NOTE = { icon = "", color = "#7aa2f7" },
+    --   IMPORTANT = { icon = "", color = "#f7768e" },
+    --   TIP = { icon = "", color = "#9ece6a" },
+    --   WARNING = { icon = "", color = "#e0af68" },
+    --   CAUTION = { icon = "", color = "#e0af68" },
+    -- },
     bullet = {
       enabled = true,
     },
