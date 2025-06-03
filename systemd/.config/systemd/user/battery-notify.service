@@ -1,0 +1,6 @@
+[Unit]
+Description=Battery Life Notify Script
+
+[Service]
+Type=oneshot
+ExecStart=/home/afonsoabc36/.config/i3/scripts/battery_notify.sh

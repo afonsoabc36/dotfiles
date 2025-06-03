@@ -1,0 +1,9 @@
+[Unit]
+Description=Run a battery notifying agent every 2 minutes.
+
+[Timer]
+OnCalendar=*:01/2
+Persistent=true
+
+[Install]
+WantedBy=default.target
