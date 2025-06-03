@@ -33,6 +33,7 @@ set $wallpaper ~/.config/.backgrounds/penguinsAroundComputer.jpg
 exec_always feh --bg-scale $wallpaper
 exec --no-startup-id xkbcomp ~/.config/mykeyboard.xkb $DISPLAY
 exec --no-startup-id i3-battery-popup -L 20 -I 5 -t 1m -n -N
+exec --no-startup-id lxpolkit
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
@@ -71,6 +72,7 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym XF86AudioPause exec --no-startup-id playerctl play-pause
 bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 bindsym XF86AudioStop exec --no-startup-id playerctl stop
@@ -80,7 +82,7 @@ bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +10% && $refr
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 10%- && $refresh_i3status
 
 # Print screen
-bindsym Print exec maim -s -u | xclip -selection clipboard -t image/png -i
+bindsym Print exec --no-startup-id flameshot gui -p ~/Pictures/Screenshots -c
 
 bindsym $mod+Shift+d exec --no-startup-id sh -c '~/.config/i3/scripts/display-setup.sh && feh --bg-scale $wallpaper'
 
@@ -103,12 +105,15 @@ for_window [urgent="latest"] focus
 
 # start a terminal
 bindsym $mod+Return exec wezterm
+bindsym $mod+c exec google-chrome
+bindsym $mod+y exec youtube-music
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec --no-startup-id dmenu_run -nb '#1a1b26' -nf '#c0caf5' -sb '#7aa2f7' -sf '#1a1b26'
+bindsym $mod+s exec --no-startup-id echo "" | rofi -dmenu -p "Search > " | xargs -I{} xdg-open https://google.com/search\?q\=\{}
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
@@ -149,7 +154,7 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
+bindsym $mod+Shift+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
