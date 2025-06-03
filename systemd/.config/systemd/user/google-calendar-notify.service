@@ -1,0 +1,6 @@
+[Unit]
+Description=Google Calendar Notify Script
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python3 /home/afonsoabc36/.config/i3/scripts/google_calendar_notify.py
