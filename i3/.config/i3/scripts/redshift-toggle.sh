@@ -2,7 +2,7 @@
 
 # Toggle file to track state
 TOGGLE_FILE="/tmp/redshift_running"
-TEMP=4250
+TEMP=4000
 
 if [ -f "$TOGGLE_FILE" ]; then
     redshift -x
