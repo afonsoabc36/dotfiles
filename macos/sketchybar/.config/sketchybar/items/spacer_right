@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+sketchybar --add item bracket_spacer_right right \
+           --set      bracket_spacer_right \
+                      width=8 \
+                      background.drawing=off

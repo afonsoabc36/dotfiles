@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+source "$CONFIG_DIR/environment"
+source "$THEME_DIR/tokyonight"
+
+VOLUME_LABEL_COLOR="$magenta"
+VOLUME_BACKGROUND_BORDER_COLOR="$magenta"
+
+sketchybar --add item volume_spacer_right right \
+           --set      volume_spacer_right \
+                      background.drawing=off
+
+sketchybar --add item volume right \
+           --set      volume \
+                      background.drawing=off \
+                      label.color="$VOLUME_LABEL_COLOR" \
+                      label.padding_left=8 \
+                      label.padding_right=0 \
+                      update_freq=10 \
+                      script="$PLUGIN_DIR/volume" \
+	   --subscribe volume volume_change
+
+sketchybar --add item volume_spacer_left right \
+           --set      volume_spacer_left \
+                      background.drawing=off
+
+sketchybar --add bracket volume_bracket volume_spacer_left volume volume_spacer_right \
+           --set         volume_bracket \
+                         background.border_color="$VOLUME_BACKGROUND_BORDER_COLOR" \
+                         background.corner_radius="$BRACKET_BACKGROUND_CORNER_RADIUS" \
+                         background.border_width="$BRACKET_BACKGROUND_BORDER_WIDTH"
