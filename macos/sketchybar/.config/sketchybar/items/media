@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+source "$CONFIG_DIR/environment"
+source "$THEME_DIR/tokyonight"
+
+MEDIA_LABEL_COLOR="$yellow"
+MEDIA_BACKGROUND_BORDER_COLOR="$yellow"
+
+sketchybar --add item media_spacer_right center \
+           --set      media_spacer_right \
+                      background.drawing=off
+
+sketchybar --add item media center \
+           --set      media \
+                      background.drawing=off \
+                      label.color="$MEDIA_LABEL_COLOR" \
+		      label.max_chars=22 \
+                      label.padding_left=8 \
+                      label.padding_right=0 \
+		      scroll_texts=on \
+		      update_freq=10 \
+		      icon=󰝚 \
+                      script="$PLUGIN_DIR/media" \
+	   --subscribe media media_change
+
+sketchybar --add item media_spacer_left center \
+           --set      media_spacer_left \
+                      background.drawing=off
+
+sketchybar --add bracket media_bracket media_spacer_left media media_spacer_right \
+           --set         media_bracket \
+                         background.border_color="$MEDIA_BACKGROUND_BORDER_COLOR" \
+                         background.corner_radius="$BRACKET_BACKGROUND_CORNER_RADIUS" \
+                         background.border_width="$BRACKET_BACKGROUND_BORDER_WIDTH"

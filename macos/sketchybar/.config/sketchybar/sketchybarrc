@@ -42,6 +42,9 @@ source "$ITEM_DIR/aerospace"
 source "$ITEM_DIR/spacer"
 source "$ITEM_DIR/front_app"
 
+# Center
+# source "$ITEM_DIR/media"
+
 # Right
 source "$ITEM_DIR/clock"
 source "$ITEM_DIR/spacer_right"
