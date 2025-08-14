@@ -104,13 +104,13 @@ preset = 'qwerty'
 [gaps]
 inner.horizontal = 0
 inner.vertical =   0
-outer.left =       6
-outer.right =      6
+outer.left =       3
+outer.right =      3
 outer.bottom =     6
 # outer.top =        0
 outer.top = [
-  { monitor.'built-in.*' = 18 },
-  48
+  { monitor.'built-in.*' = 14 },
+  42
 ]
 
 # 'main' binding mode declaration
