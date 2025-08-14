@@ -214,6 +214,7 @@ alt-enter = 'exec-and-forget open -n /Applications/WezTerm.app'
 alt-y = 'exec-and-forget open -n /Applications/Youtube\ Music.app'
 alt-c = 'exec-and-forget open -n /Applications/Google\ Chrome.app'
 alt-t = 'exec-and-forget open -n /Applications/Microsoft\ Teams.app'
+alt-n = 'exec-and-forget open -n /Applications/Todoist.app'
 alt-o = 'exec-and-forget open -n /Applications/Microsoft\ Outlook.app'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
