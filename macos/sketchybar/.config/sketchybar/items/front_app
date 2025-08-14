@@ -18,7 +18,7 @@ sketchybar --add item  front_app left \
                        label.color="$FRONT_APP_LABEL_COLOR" \
                        label.padding_left=8 \
                        label.padding_right=0 \
-                       script="$PLUGIN_DIR/front_app.sh"
+                       script="$PLUGIN_DIR/front_app"
 
 sketchybar --add item front_app_spacer_right left \
            --set      front_app_spacer_right \
