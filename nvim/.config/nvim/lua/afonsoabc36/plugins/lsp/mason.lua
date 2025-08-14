@@ -29,15 +29,15 @@ return {
 
         mason_lspconfig.setup({
             ensure_installed = {
-                "lua_ls",
-                "rust_analyzer",
-                "pyright",
-                "omnisharp",
-                "clangd",
-                "html",
-                "cssls",
-                "jsonls",
-                "tinymist",
+                -- "lua_ls",
+                -- "rust_analyzer",
+                -- "pyright",
+                -- "omnisharp",
+                -- "clangd",
+                -- "html",
+                -- "cssls",
+                -- "jsonls",
+                -- "tinymist",
             },
             handlers = {
                 ["tinymist"] = function()
