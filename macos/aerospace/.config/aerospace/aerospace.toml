@@ -106,7 +106,7 @@ automatically-unhide-macos-hidden-apps = false
     inner.vertical =   0
     outer.left =       3
     outer.right =      3
-    outer.bottom =     6
+    outer.bottom =     3
     # outer.top =        0
     outer.top = [
       { monitor.'built-in.*' = 14 },
@@ -143,6 +143,8 @@ automatically-unhide-macos-hidden-apps = false
 # end tell'
 # '''
 
+    cmd-h = []
+    cmd-alt-h = []
     #alt-ctrl-shift-f = 'fullscreen'
     alt-f = 'fullscreen --no-outer-gaps'
     alt-ctrl-f = 'layout floating tiling'
@@ -208,6 +210,7 @@ automatically-unhide-macos-hidden-apps = false
 
     alt-enter = 'exec-and-forget open -n /Applications/WezTerm.app'
     alt-y = 'exec-and-forget open -n /Applications/Youtube\ Music.app'
+    alt-v = 'exec-and-forget open -n /Applications/AWS\ VPN\ Client/AWS\ VPN\ Client.app'
     alt-c = 'exec-and-forget open -n /Applications/Google\ Chrome.app'
     alt-t = 'exec-and-forget open -n /Applications/Microsoft\ Teams.app'
     alt-n = 'exec-and-forget open -n /Applications/Todoist.app'
@@ -242,8 +245,9 @@ alt-r = 'mode resize'
     3 = 1
     4 = 2
     5 = 2
-    6 = 2
+    6 = 3
     7 = 1
     8 = 1
     9 = 3
     10 = 3
+
