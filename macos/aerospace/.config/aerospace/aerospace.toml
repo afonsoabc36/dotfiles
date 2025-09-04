@@ -224,6 +224,7 @@ alt-r = 'mode resize'
 
 [mode.resize.binding]
     esc = 'mode main'
+    alt-r = 'mode main'
     slash = 'resize smart -50'
     equal = 'resize smart +50'
 
