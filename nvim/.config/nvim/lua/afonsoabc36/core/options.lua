@@ -24,6 +24,9 @@ opt.breakindent = true
 -- Save undo history
 opt.undofile = true
 
+-- Clipboard
+-- opt.clipboard = "unnamedplus"
+
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
 opt.ignorecase = true
 opt.smartcase = true

@@ -29,6 +29,7 @@ return {
 
         mason_lspconfig.setup({
             ensure_installed = {
+                -- "bashls",
                 -- "lua_ls",
                 -- "rust_analyzer",
                 -- "pyright",
@@ -74,6 +75,8 @@ return {
                 "prettier",
                 "pylint",
                 "eslint_d",
+                "shellcheck",
+                "shfmt",
             },
         })
     end,
