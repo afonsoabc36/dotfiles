@@ -7,25 +7,25 @@ BATTERY_LABEL_COLOR="$magenta"
 BATTERY_BACKGROUND_BORDER_COLOR="$magenta"
 
 sketchybar --add item battery_spacer_right right \
-           --set      battery_spacer_right \
-                      background.drawing=off
+    --set battery_spacer_right \
+    background.drawing=off
 
 sketchybar --add item battery right \
-           --set      battery \
-                      background.drawing=off \
-                      label.color="$BATTERY_LABEL_COLOR" \
-                      label.padding_left=8 \
-                      label.padding_right=0 \
-                      update_freq=120 \
-                      script="$PLUGIN_DIR/battery"
-	   --subscribe battery system_woke power_source_change
+    --set battery \
+    background.drawing=off \
+    label.color="$BATTERY_LABEL_COLOR" \
+    label.padding_left=8 \
+    label.padding_right=0 \
+    update_freq=30 \
+    script="$PLUGIN_DIR/battery"
+--subscribe battery system_woke power_source_change
 
 sketchybar --add item battery_spacer_left right \
-           --set      battery_spacer_left \
-                      background.drawing=off
+    --set battery_spacer_left \
+    background.drawing=off
 
 sketchybar --add bracket battery_bracket battery_spacer_left battery battery_spacer_right \
-           --set         battery_bracket \
-                         background.border_color="$BATTERY_BACKGROUND_BORDER_COLOR" \
-                         background.corner_radius="$BRACKET_BACKGROUND_CORNER_RADIUS" \
-                         background.border_width="$BRACKET_BACKGROUND_BORDER_WIDTH"
+    --set battery_bracket \
+    background.border_color="$BATTERY_BACKGROUND_BORDER_COLOR" \
+    background.corner_radius="$BRACKET_BACKGROUND_CORNER_RADIUS" \
+    background.border_width="$BRACKET_BACKGROUND_BORDER_WIDTH"

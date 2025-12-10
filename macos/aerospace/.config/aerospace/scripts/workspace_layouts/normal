@@ -1,0 +1,66 @@
+#!/usr/bin/env bash
+
+# Wait for a window with a given app name in a given workspace
+wait_for_window_in_workspace() {
+    app_name="$1"
+    workspace="$2"
+    while true; do
+        if aerospace list-windows --workspace "$workspace" | grep "$app_name" >/dev/null; then
+            sleep 0.5
+            break
+        fi
+        sleep 0.1
+    done
+}
+
+# --- Workspace 1: WezTerm ---
+aerospace msg workspace 1
+open -n "/Applications/WezTerm.app"
+sleep 4
+aerospace move-node-to-workspace 1
+wait_for_window_in_workspace "WezTerm" 1
+wezterm cli spawn -- bash -c "tmux"
+
+# --- Workspace 2: Zen ---
+open -n "/Applications/Zen.app"
+sleep 4
+aerospace move-node-to-workspace 2
+wait_for_window_in_workspace "Zen" 2
+
+# --- Workspace 3: Microsoft Teams + YouTube Music ---
+open -n "/Applications/Microsoft Teams.app"
+sleep 10
+aerospace move-node-to-workspace 3
+wait_for_window_in_workspace "Microsoft Teams" 3
+open -n "/Applications/YT Music.app"
+sleep 4
+aerospace move-node-to-workspace 3
+wait_for_window_in_workspace "YT Music" 3
+
+# --- Workspace 8: Outlook + Todoist ---
+open -n "/Applications/Microsoft Outlook.app"
+sleep 10
+aerospace move-node-to-workspace 8
+wait_for_window_in_workspace "Microsoft Outlook" 8
+open -n "/Applications/Todoist.app"
+sleep 4
+aerospace move-node-to-workspace 8
+wait_for_window_in_workspace "Todoist" 8
+
+# --- Workspace 9: WezTerm ---
+open -n "/Applications/WezTerm.app"
+sleep 4
+aerospace move-node-to-workspace 9
+wait_for_window_in_workspace "WezTerm" 9
+
+# --- Workspace 10: Zen ---
+open -n "/Applications/Zen.app"
+sleep 4
+aerospace move-node-to-workspace 10
+wait_for_window_in_workspace "Zen" 10
+
+sleep 3
+# --- Focus back to workspaces I want visible ---
+aerospace msg workspace 3
+aerospace msg workspace 10
+aerospace msg workspace 2
