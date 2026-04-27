@@ -3,6 +3,7 @@ return {
   dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" }, -- if you use the mini.nvim suite
   ---@module 'render-markdown'
   ---@type render.md.UserConfig
+  ft = { "markdown", "Avante" },
   init = function()
     -- TokyoNight colorscheme
     local colors = {

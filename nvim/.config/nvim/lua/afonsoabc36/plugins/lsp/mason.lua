@@ -29,8 +29,8 @@ return {
 
         mason_lspconfig.setup({
             ensure_installed = {
+                "lua_ls", -- Ensure lua_ls is installed
                 -- "bashls",
-                -- "lua_ls",
                 -- "rust_analyzer",
                 -- "pyright",
                 -- "omnisharp",
@@ -41,8 +41,38 @@ return {
                 -- "tinymist",
             },
             handlers = {
+                -- Default handler for all servers
+                function(server_name)
+                    require("lspconfig")[server_name].setup({
+                        capabilities = capabilities,
+                    })
+                end,
+                -- Special config for lua_ls
+                ["lua_ls"] = function()
+                    require("lspconfig").lua_ls.setup({
+                        capabilities = capabilities,
+                        settings = {
+                            Lua = {
+                                workspace = {
+                                    library = vim.api.nvim_get_runtime_file("", true),
+                                    checkThirdParty = false,
+                                },
+                                diagnostics = {
+                                    globals = { "vim" },
+                                },
+                                completion = {
+                                    callSnippet = "Replace",
+                                },
+                                telemetry = {
+                                    enabled = false,
+                                },
+                            },
+                        },
+                    })
+                end,
+                -- Special config for tinymist
                 ["tinymist"] = function()
-                    require("lspconfig")["tinymist"].setup({
+                    require("lspconfig").tinymist.setup({
                         capabilities = capabilities,
                         settings = {
                             formatterMode = "typstyle",

@@ -5,14 +5,14 @@ return {
         "hrsh7th/cmp-nvim-lsp",
         { "antosha417/nvim-lsp-file-operations", config = true },
         { "folke/neodev.nvim", opts = {} },
+        "williamboman/mason.nvim", -- Ensure mason loads first
+        "williamboman/mason-lspconfig.nvim",
     },
     config = function()
         vim.diagnostic.config({
             float = { border = "rounded" },
         })
 
-        local lspconfig = require("lspconfig")
-        local mason_lspconfig = require("mason-lspconfig")
         local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
         vim.api.nvim_create_autocmd("LspAttach", {
@@ -44,39 +44,7 @@ return {
             vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
         end
 
-        mason_lspconfig.setup({
-            ensure_installed = { "lua_ls" }, -- add any other servers you want
-            handlers = {
-                -- Default handler for all servers
-                function(server_name)
-                    lspconfig[server_name].setup({
-                        capabilities = capabilities,
-                    })
-                end,
-                -- Special config for lua_ls
-                ["lua_ls"] = function()
-                    lspconfig.lua_ls.setup({
-                        capabilities = capabilities,
-                        settings = {
-                            Lua = {
-                                workspace = {
-                                    library = vim.api.nvim_get_runtime_file("", true),
-                                    checkThirdParty = false,
-                                },
-                                diagnostics = {
-                                    globals = { "vim" },
-                                },
-                                completion = {
-                                    callSnippet = "Replace",
-                                },
-                                telemetry = {
-                                    enabled = false,
-                                },
-                            },
-                        },
-                    })
-                end,
-            },
-        })
+        -- Mason-lspconfig setup is now handled in mason.lua
+        -- This file only sets up diagnostic signs and keymaps
     end,
 }

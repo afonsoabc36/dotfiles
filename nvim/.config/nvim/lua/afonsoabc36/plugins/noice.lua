@@ -24,6 +24,16 @@ return {
           view = "cmdline",
           filter = { event = "msg_showmode" },
         },
+        -- Disable noice for input prompts (DAP debugging)
+        {
+          filter = { event = "msg_show", kind = "confirm_sub" },
+          opts = { skip = true },
+        },
+        -- Disable noice for input() and inputlist()
+        {
+          filter = { event = "cmdline", kind = "" },
+          opts = { skip = true },
+        },
       },
       status = {
         enabled = true,
