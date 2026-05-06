@@ -20,6 +20,7 @@ sleep 4
 aerospace move-node-to-workspace 1
 wait_for_window_in_workspace "WezTerm" 1
 wezterm cli spawn -- bash -c "tmux"
+sleep 3
 
 # --- Workspace 2: Zen ---
 open -n "/Applications/Zen.app"
@@ -37,6 +38,18 @@ sleep 4
 aerospace move-node-to-workspace 3
 wait_for_window_in_workspace "Todoist" 3
 
+# --- Workspace 4: Obsidian ---
+open -n "/Applications/Obsidian.app"
+sleep 3
+aerospace move-node-to-workspace 4
+wait_for_window_in_workspace "Obsidian" 4
+
+# --- Workspace 5: Utils ---
+nohup /Applications/AWS\ VPN\ Client/AWS\ VPN\ Client.app/Contents/MacOS/AWS\ VPN\ Client 2>&1 &
+sleep 3
+open "/Applications/flameshot.app"
+sleep 2
+
 # --- Workspace 8: Outlook ---
 open -n "/Applications/Microsoft Outlook.app"
 sleep 10
@@ -49,16 +62,7 @@ sleep 4
 aerospace move-node-to-workspace 9
 wait_for_window_in_workspace "YT Music" 9
 
-# --- Workspace 10: Chrome ---
-open -n "/Applications/Google Chrome.app"
+# --- Workspace 10: Brave ---
+open -n "/Applications/Brave Browser.app"
 sleep 4
 aerospace move-node-to-workspace 10
-wait_for_window_in_workspace "Google Chrome" 10
-
-sleep 3
-# --- Focus back to workspaces I want visible ---
-aerospace msg workspace 3
-sleep 0.5
-aerospace msg workspace 9
-sleep 0.5
-aerospace msg workspace 2
